@@ -2,19 +2,22 @@ def multiplication(num1, num2):
     return num1 * num2
 def addition(num1, num2):
     return num1 + num2
-def subtraction(num2, num1):
+def subtraction(num1, num2):
     return num1 - num2
 def divide(num1, num2):
-    return num1 / num2
+        try:
+            result = num1 / num2
+        except ZeroDivisionError:
+            print('Error: Division by zero')
+        return result
 
 while True:
     try:
         value1 = int(input("Enter 1st number: "))
         value2 = int(input("Enter 2nd number: "))
+        print("Select operation 1-Division, 2-Multiplication, 3-Addition, 4-Subtraction, 5-Quit")
 
-        print("Select operation 1-Division, 2-Multiplication, 3-Addition, 4-Subtraction")
-
-        operation = int(input("Choose operation 1/2/3/4: "))
+        operation = int(input("Choose operation 1/2/3/4/5: "))
 
         if operation == 1:
             print(value1, "/", value2, "=", divide(value1, value2))
@@ -27,8 +30,11 @@ while True:
 
         elif operation == 4:
             print(value1, "-", value2, "=", subtraction(value1, value2))
-
+        elif operation == 5:
+            print('Quitting')
+            break
         else:
             print("Enter correct operation")
     except Exception as e:
-        print("Exception: ", e)
+        print("Exception: " , e)
+    break
